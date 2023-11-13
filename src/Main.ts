@@ -1,7 +1,7 @@
 import express from 'express';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
-import cors from 'cors';
+// import cors from 'cors';
 import { generateQuestion } from './Utils';
 import {PlayerInfo} from "./Interfaces";
 
@@ -14,20 +14,24 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server);
 
-const corsOptions = {
-  origin: '*',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
-
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: '*',
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true,
+//   optionsSuccessStatus: 204,
+// };
+//
+// app.use(cors(corsOptions));
 
 const connectedClients = new Set();
 
 let players: {[key: string]: PlayerInfo} = {};
 let currentQuestion = generateQuestion();
 
+
+app.get('/', (req, res) => {
+  res.send('<h1>Nothing To See Here</h1>');
+});
 
 app.get('/ping', (req, res) => {
   res.send('<h1>Super Pong</h1>');
