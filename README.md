@@ -1,1 +1,1 @@
-# MathChamp
+# BattleMath Server
