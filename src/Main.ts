@@ -29,10 +29,6 @@ let players: {[key: string]: PlayerInfo} = {};
 let currentQuestion = generateQuestion();
 
 
-app.get('/', (req, res) => {
-  res.send('<h1>Nothing To See Here</h1>');
-});
-
 app.get('/ping', (req, res) => {
   res.send('<h1>Super Pong</h1>');
 });
