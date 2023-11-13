@@ -5,7 +5,7 @@
   "main": "src/Main.ts",
   "scripts": {
     "test": "bun test",
-    "start": "bun run --watch src/Main.ts",
+    "start": "bun run --watch src/Main.ts"
   },
   "keywords": [],
   "author": "",
