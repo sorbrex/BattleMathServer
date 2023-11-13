@@ -5,9 +5,7 @@
   "main": "src/Main.ts",
   "scripts": {
     "test": "bun test",
-    "dev": "bun run --watch src/Main.ts",
-    "build": "tsc",
-    "start": "node src/Main.js"
+    "start": "bun run --watch src/Main.ts",
   },
   "keywords": [],
   "author": "",
