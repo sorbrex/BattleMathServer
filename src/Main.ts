@@ -1,7 +1,7 @@
 import express from 'express';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
-// import cors from 'cors';
+import cors from 'cors';
 import { generateQuestion } from './Utils';
 import {PlayerInfo} from "./Interfaces";
 
@@ -16,21 +16,19 @@ const server = createServer(app)
     console.log(`🚀 🚀 Server Start @ http://localhost:${PORT}`);
   });
 
+const corsOptions = {
+  origin: '*',
+  methods: 'GET,HEAD,POST',
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
+
 const io = new Server(server,{
-  cors: {
-    origin: "*:*",
-    methods: ["GET", "POST"]
-  }
+  cors: corsOptions
 });
 
-// const corsOptions = {
-//   origin: '*',
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//   credentials: true,
-//   optionsSuccessStatus: 204,
-// };
-//
-// app.use(cors(corsOptions));
 
 const connectedClients = new Set();
 
