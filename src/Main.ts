@@ -11,8 +11,17 @@ const TARGET_SCORE = 10;
 const PORT = 3000;
 
 const app = express();
-const server = createServer(app);
-const io = new Server(server);
+const server = createServer(app)
+  .listen(PORT, () => {
+    console.log(`🚀 🚀 Server Start @ http://localhost:${PORT}`);
+  });
+
+const io = new Server(server,{
+  cors: {
+    origin: "*:*",
+    methods: ["GET", "POST"]
+  }
+});
 
 // const corsOptions = {
 //   origin: '*',
@@ -76,10 +85,6 @@ io.on('connection', (socket) => {
     connectedClients.delete(socket.id);
     delete players[socket.id];
   });
-});
-
-server.listen(PORT, () => {
-  console.log(`🚀 🚀 Server Start @ http://localhost:${PORT}`);
 });
 
 // Start asking questions
