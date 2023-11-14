@@ -30,6 +30,7 @@ let currentQuestion = generateQuestion();
 
 
 app.get('/ping', (req, res) => {
+  console.log('Received Ping');
   res.send('<h1>Super Pong</h1>');
 });
 
